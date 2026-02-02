@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💘</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff4e6a, #ff9aa2);
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      max-width: 420px;
+      width: 90%;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+    }
+
+    .actions {
+      position: relative;
+      height: 140px;
+    }
+
+    a {
+      color: #fff;
+      font-size: 1.4em;
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    #yesLink {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+    }
+
+    #noBtn {
+      background: #fff;
+      color: #ff4e6a;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 20px;
+      cursor: pointer;
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+    }
+
+    .details {
+      display: none;
+      margin-top: 25px;
+      text-align: left;
+      font-size: 1.05em;
+      line-height: 1.6;
+      background: rgba(255,255,255,0.15);
+      padding: 20px;
+      border-radius: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Adales 💖</h1>
+    <p>Will you be my Valentine?</p>
+
+    <div class="actions">
+      <button id="noBtn">No 🙃</button>
+      <a id="yesLink" onclick="sayYes()">click</a>
+    </div>
+
+    <div class="details" id="details">
+      <p><strong>SATURDAY:</strong> February 14</p>
+      <p><strong>Time:</strong> 7:30pm</p>
+      <p><strong>Where:</strong> (It’s a surprise)</p>
+      <p><strong>With:</strong> YO MANS (future husband) 😌💍</p>
+
+      <p><strong>Attire:</strong><br>
+      Dress to impress — a dress or polished outfit. Elegant, confident, and just a little tempting 🔥✨<br>
+      I’ll be in a button-up and clean shoes.</p>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const card = document.querySelector(".card");
+
+    function moveNo() {
+      const cardRect = card.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+
+      const maxX = cardRect.width - btnRect.width - 20;
+      const maxY = cardRect.height - btnRect.height - 20;
+
+      noBtn.style.left = Math.random() * maxX + "px";
+      noBtn.style.top = Math.random() * maxY + "px";
+    }
+
+    noBtn.addEventListener("mouseenter", moveNo);
+    noBtn.addEventListener("touchstart", moveNo);
+
+    function sayYes() {
+      const confirmed = confirm("Are you sure you want to say YES? 💖");
+      if (confirmed) {
+        document.getElementById("details").style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>
